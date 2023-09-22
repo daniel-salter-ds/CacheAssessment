@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Cache.Demo/1.0.0": {
+        "dependencies": {
+          "Cache": "1.0.0"
+        },
+        "runtime": {
+          "Cache.Demo.dll": {}
+        }
+      },
+      "Cache/1.0.0": {
+        "runtime": {
+          "Cache.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Cache.Demo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Cache/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
