@@ -49,19 +49,24 @@ Console.WriteLine(animalCache);
 Console.WriteLine();
 
 Console.WriteLine("Get 3, then rewrite Cache contents to check it is bumped to top of Cache:");
+Console.WriteLine();
 Console.WriteLine($"Cache[2] = {animalCache[2]}");
-Console.WriteLine(); 
 Console.WriteLine(animalCache);
 Console.WriteLine();
 
 Console.WriteLine("Set 0 = 'Lemur', then rewrite Cache contents to check it is bumped to top of Cache:");
-animalCache[0] = "Lemur";
 Console.WriteLine();
+animalCache[0] = "Lemur";
 Console.WriteLine(animalCache);
 Console.WriteLine();
 
 Console.WriteLine("Add new pair (10, 'Fish'), then rewrite Cache contents to check least recently touched pair is removed from Cache:");
+Console.WriteLine();
 animalCache[10] = "Fish";
 Console.WriteLine();
 Console.WriteLine(animalCache);
 Console.WriteLine();
+
+Console.WriteLine();
+Console.WriteLine("----- Press any key to end the demo -----");
+Console.ReadKey();

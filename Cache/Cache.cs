@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace CacheAssessment
+﻿namespace CacheAssessment
 {
     public class Cache<TKey, TValue>
     {
@@ -23,7 +21,6 @@ namespace CacheAssessment
             {
                 throw new ArgumentOutOfRangeException("capacity", capacity, "Cache capacity must be positive");
             }
-
             _capacity = capacity;
         }
 
@@ -109,18 +106,23 @@ namespace CacheAssessment
         {
             if (_cache.Count >= _capacity)
             {
-                //CachePair removedPair = _cache.Last();
-                // Log.Warn($"Cache capacity of {_capacity} has been reached. Least recently touched pair ({removePair.key}, {removePair.value}) has been evicted");
+                CachePair removedPair = _cache.Last();
+                Console.WriteLine($"WARN: Cache capacity of {_capacity} has been exceeded. Least recently touched pair ({removedPair.Key}, {removedPair.Value}) has been evicted");
                 _cache.RemoveLast();
             }
-
-            _cache.AddFirst(new CachePair(key, value));
+            lock (_locker)
+            {
+                _cache.AddFirst(new CachePair(key, value));
+            }
         }
 
         private static void MoveNodeToFirst(LinkedListNode<CachePair> node)
         {
-            _cache.Remove(node);
-            _cache.AddFirst(node);
+            lock (_locker)
+            {
+                _cache.Remove(node);
+                _cache.AddFirst(node);
+            }
         }
 
         public override string ToString()
@@ -146,6 +148,7 @@ namespace CacheAssessment
 
         private static LinkedList<CachePair> _cache = new LinkedList<CachePair>();
         private static int _capacity = 64;
+        private static object _locker = new object();
 
         #endregion
 
